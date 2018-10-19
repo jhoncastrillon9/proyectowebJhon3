@@ -69,11 +69,13 @@ Este Script contiene el proceso para nuevos pedidos
                   <td><input type="number"  class="form-control" name="valorsubtotal_<?php echo $i?>" id="valorsubtotal_<?php echo $i?>" value="" readonly onblur="calcular('<?php echo $i ?>')"></td>
                   <td>
 
-                    <button name="agregar_<?php echo $i?>" id="agregar_<?php echo $i?>" class="btn btn-success"><i class="fa fa-plus" title="Click para agregar este producto (<?php echo $fila["nombre"];?>)" onclick="agregar('<?php echo $i ?>')" type="button"></i></button>
+                    <button name="agregar_" id="agregar_" class="btn btn-success" onclick="agregar('<?php echo $i ?>')" type="button"><i class="fa fa-plus" title="Click para agregar este producto (<?php echo $fila["nombre"];?>)"></i></button>
 
-                      <input type="hidden" name="ref_<?php echo $i ?>" id="ref_<?php echo $i ?>" value="<?php echo $fila["referencia"] ?>">
-                      <input type="hidden" name="nombre__<?php echo $i ?>" id="nombre_<?php echo $i ?>" value="<?php echo $fila["nombre"] ?>">
-                      <input type="hidden" name="token" id="token" value="<?php echo $token ?>">
+                      <span id="mensaje_<?php echo $i ?>" name="mensaje_<?php echo $i ?>"></span>
+
+                      <input type="hidden" name="referencia_<?php echo $i ?>" id="referencia_<?php echo $i ?>" value="<?php echo $fila["referencia"] ?>">
+                      <input type="hidden" name="nombre_<?php echo $i ?>" id="nombre_<?php echo $i ?>" value="<?php echo $fila["nombre"] ?>">
+                      <input type="hidden" name="token_<?php echo $i ?>" id="token_<?php echo $i ?>" value="<?php echo $token ?>">
 
                   </td>
                 </tr>

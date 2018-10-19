@@ -34,7 +34,7 @@ Vista o pagina de nuevo pedido
 
 <script type="text/javascript">
 
-  function calcular (pos){
+  function calcular(pos){
     $('#valorsubtotal_'+pos).val(0);
     var cantidad = $('#cantidad_'+pos).val();
     var impuesto = $('#impuesto_'+pos).val();
@@ -58,8 +58,37 @@ Vista o pagina de nuevo pedido
       "cantidad":$("#cantidad_"+pos).val(),
       "subtotal":$("#valorsubtotal_"+pos).val(),
       "referencia":$("#referencia_"+pos).val(),
-      "token":$("#valor_"+pos).val()
+      "token":$("#token_"+pos).val()
     }
+
+    if ($("#cantidad_"+pos).val()=="") {
+      $("#mensaje_"+pos).html(" <span class='btn btn-danger'>El campo cantidad no puede estar vacio</span>");
+      $("#mensaje_"+pos).fadeOut(5000);
+      return;
+    }
+
+//invocar ajax
+$.ajax({
+
+  data :parametros,
+  url : ruta,
+  type: "Post",
+  beforesend:function(){
+    $("#mensaje_"+pos).show();
+    $("#mensaje_"+pos).html(" <span class='btn btn-info'>Procesando</span>");
+  },
+  success:function(response){
+    $("#mensaje_"+pos).show();
+    $("#mensaje_"+pos).html(response);
+  },
+  error:function(jqXHR, textStatus, errorthrown){
+
+  }
+
+})
+
+
+
   }
 
   

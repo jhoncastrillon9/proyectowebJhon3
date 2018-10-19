@@ -18,6 +18,8 @@ class Pedidos extends CI_Controller {
 		parent:: __construct();
 		// cargar el modelo de productos
 		$this->load->model("productos_model");
+		//cargar el mdoelo de pedidos
+		$this->load->model("pedidos_model");
 
 		if (!$this->session->userdata("idusuario")) {
 			redirect('login');
@@ -51,6 +53,14 @@ class Pedidos extends CI_Controller {
 		$vector["token"]=$token;
 		
 		$this->load->view('nuevopedido',$vector);
+	}
+
+	public function agregar(){
+		//cargar el modelo y la funcion que se llame agregar producto
+		//si devuelve una respeusta positiv ejecutar otra funcion del mismo modelo que se llame carrito y esa respuesta la usaremso apra pintar el control html que dice "el pedido va en tanto ...."
+		$respuesta = $this->pedidos_model->agregar_producto();
+
+
 	}
 
 
