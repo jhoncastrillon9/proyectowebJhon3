@@ -59,6 +59,7 @@ class pedidos_model extends CI_Model
 						"impuestos"=>$impuesto,
 						"valor"=>$valor
 				);
+				
 				//en CI se paa primero las reglas y luego la tabla a actualizar
 				$this->db->where("token",$token);
 				$this->db->where("referencia",$referencia);
