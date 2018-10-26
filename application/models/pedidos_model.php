@@ -35,6 +35,7 @@ class pedidos_model extends CI_Model
 	$subtotal = $this->input->post("subtotal");
 	$referencia = $this->input->post("referencia");
 	$token = $this->input->post("token");
+	$tipo = $this->input->post("tipo");
 
 		//peveri uinyesion de codigo
 		$valor = $this->security->xss_clean($valor);
@@ -44,6 +45,7 @@ class pedidos_model extends CI_Model
 		$subtotal = $this->security->xss_clean($subtotal);
 		$referencia = $this->security->xss_clean($referencia);
 		$token = $this->security->xss_clean($token);
+		$tipo = $this->security->xss_clean($tipo);
 
 		//si exsite que lo update o sino que lo inseerte 
 		$vector=array("token"=>$token, "referencia"=>$referencia);
@@ -60,7 +62,12 @@ class pedidos_model extends CI_Model
 				//en CI se paa primero las reglas y luego la tabla a actualizar
 				$this->db->where("token",$token);
 				$this->db->where("referencia",$referencia);
-				$this->db->update($this->tabla2,$data);
+				if ($tipo==2) {
+					$this->db->delete($this->tabla2,$data);
+				}else {
+					$this->db->update($this->tabla2,$data);	
+				}
+				
 		}
 		else{
 			//insertar

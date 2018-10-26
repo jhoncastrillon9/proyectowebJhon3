@@ -82,7 +82,13 @@ $.ajax({
   success:function(response){
     $("#mensaje_"+pos).show();    
     $("#carrito").html(response );
-    $("#mensaje_"+pos).html("<span class='btn btn-success'>Agregado</span> ");  
+    if (tipo==1) {
+      $("#mensaje_"+pos).html("<span class='btn btn-success'>Agregado</span> ");  
+    }
+    else{
+      $("#mensaje_"+pos).html("<span class='btn btn-danger'>Eliminado</span> ");  
+    }
+    
     $("#mensaje_"+pos).fadeOut(2000);  
   },
   error:function(jqXHR, textStatus, errorthrown){
