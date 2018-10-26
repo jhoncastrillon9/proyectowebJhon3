@@ -46,7 +46,7 @@ Vista o pagina de nuevo pedido
 
   }
 
-  function agregar(pos){
+  function agregar(pos, tipo){
     //ejecutar ajax que agregue el producto y contabilice el total 
     //capturar ruta
     var ruta = $("#formapedidos").attr("action");
@@ -58,7 +58,8 @@ Vista o pagina de nuevo pedido
       "cantidad":$("#cantidad_"+pos).val(),
       "subtotal":$("#valorsubtotal_"+pos).val(),
       "referencia":$("#referencia_"+pos).val(),
-      "token":$("#token_"+pos).val()
+      "token":$("#token_"+pos).val(),
+      "tipo":tipo
     }
 
     if ($("#cantidad_"+pos).val()=="") {
@@ -76,10 +77,13 @@ $.ajax({
   beforesend:function(){
     $("#mensaje_"+pos).show();
     $("#mensaje_"+pos).html(" <span class='btn btn-info'>Procesando</span>");
+
   },
   success:function(response){
-    $("#mensaje_"+pos).show();
-    $("#mensaje_"+pos).html(response);
+    $("#mensaje_"+pos).show();    
+    $("#carrito").html(response );
+    $("#mensaje_"+pos).html("<span class='btn btn-success'>Agregado</span> ");  
+    $("#mensaje_"+pos).fadeOut(2000);  
   },
   error:function(jqXHR, textStatus, errorthrown){
 

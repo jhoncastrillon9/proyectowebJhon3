@@ -69,7 +69,9 @@ Este Script contiene el proceso para nuevos pedidos
                   <td><input type="number"  class="form-control" name="valorsubtotal_<?php echo $i?>" id="valorsubtotal_<?php echo $i?>" value="" readonly onblur="calcular('<?php echo $i ?>')"></td>
                   <td>
 
-                    <button name="agregar_" id="agregar_" class="btn btn-success" onclick="agregar('<?php echo $i ?>')" type="button"><i class="fa fa-plus" title="Click para agregar este producto (<?php echo $fila["nombre"];?>)"></i></button>
+                    <button name="agregar_" id="agregar_" class="btn btn-success" onclick="agregar('<?php echo $i ?>',1)" type="button"><i class="fa fa-plus" title="Click para agregar este producto (<?php echo $fila["nombre"];?>)"></i></button>
+
+                    <button name="eliminar" id="eliminar" class="btn btn-danger" onclick="agregar('<?php echo $i ?>',2)" type="button"><i class="fa fa-minus" title="Click para eliminar este producto (<?php echo $fila["nombre"];?>)"></i></button>
 
                       <span id="mensaje_<?php echo $i ?>" name="mensaje_<?php echo $i ?>"></span>
 

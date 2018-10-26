@@ -58,7 +58,13 @@ class Pedidos extends CI_Controller {
 	public function agregar(){
 		//cargar el modelo y la funcion que se llame agregar producto
 		//si devuelve una respeusta positiv ejecutar otra funcion del mismo modelo que se llame carrito y esa respuesta la usaremso apra pintar el control html que dice "el pedido va en tanto ...."
-		$respuesta = $this->pedidos_model->agregar_producto();
+		$respuesta = $this->pedidos_model->agregar_productos();
+		//si el proceso se realiza la idea es devolverle al ajax en cuandot va la compra para listarlo en la parte de //arriba
+		if ($respuesta) {
+			$total=$this->pedidos_model->carrito();	
+		}
+
+		echo "Su pedido va en: ".$total;
 
 
 	}
