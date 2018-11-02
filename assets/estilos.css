@@ -1,0 +1,28 @@
+.content-header{
+	background-color: #63599e;
+	color: white;
+	padding: 60px;	
+}
+.content-footer{
+	margin-top: 80px;
+}
+
+.menu-site a{
+color: white;
+padding: 25px;
+font-size: 15px;
+
+}
+a{
+	color: white;
+	padding: 25px;
+font-size: 15px;
+
+}
+
+a:hover{
+	color: white;
+	padding: 25px;
+font-size: 15px;
+
+}
